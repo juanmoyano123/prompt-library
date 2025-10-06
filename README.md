@@ -2,6 +2,39 @@
 
 Una hermosa aplicación para gestionar tu biblioteca personal de prompts de IA con editor markdown avanzado y optimización mediante Claude AI.
 
+## 🚀 Quick Start
+
+### Instalación
+
+```bash
+# 1. Clonar el repositorio
+git clone <your-repo-url>
+cd "Prompt Library"
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Configurar API Key
+# Copia el template de variables de entorno
+cp .env.example .env.local
+
+# 4. Editar .env.local y agregar tu API key
+# VITE_CLAUDE_API_KEY=tu_api_key_aqui
+
+# 5. Iniciar el servidor de desarrollo
+npm run dev
+```
+
+### Obtener tu API Key de Claude
+
+1. Ve a [Anthropic Console](https://console.anthropic.com/settings/keys)
+2. Inicia sesión o crea una cuenta
+3. Click en "Create Key"
+4. Copia tu API key (empieza con `sk-ant-api...`)
+5. Pégala en tu archivo `.env.local`
+
+**Nota:** El archivo `.env.local` está ignorado por Git y nunca se subirá al repositorio. Tu API key está segura.
+
 ## Características
 
 ### Core Features
@@ -39,14 +72,39 @@ npm install
 npm run dev
 ```
 
-## Configuración de API de Claude
+## 🔒 Seguridad de la API Key
 
-Para habilitar la función de optimización de prompts:
+Tu API key está completamente segura:
 
-1. Obtén tu API key desde [Anthropic Console](https://console.anthropic.com/settings/keys)
-2. Click en el ícono de Settings (⚙️) en el header
-3. Ingresa tu API key y valida
-4. La key se guarda localmente y nunca se envía a servidores externos
+- ✅ Se almacena en `.env.local` (ignorado por Git)
+- ✅ Nunca se commitea al repositorio
+- ✅ No se expone en el código del repositorio
+- ✅ Cada desarrollador usa su propia key
+- ✅ Configuración local única por máquina
+
+### Verificar Configuración
+
+Para verificar que tu API key está configurada:
+
+1. Abre la aplicación
+2. Click en el ícono Settings (⚙️)
+3. Verás el estado de configuración
+4. Si está configurada, verás un ✓ verde
+
+### Antes de Hacer Push a GitHub
+
+El `.gitignore` ya está configurado para proteger tu API key, pero verifica:
+
+```bash
+# Ver qué archivos se van a commitear
+git status
+
+# Verificar que .env.local NO aparece en la lista
+# Si aparece, NO hagas commit
+
+# Ver el contenido del gitignore
+cat .gitignore | grep .env
+```
 
 ## Uso
 

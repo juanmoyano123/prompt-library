@@ -1,7 +1,12 @@
 // Claude API integration for prompt optimization
-// Note: This requires an API key to be configured
+// API key is loaded from environment variables (.env.local)
 
 const CLAUDE_API_URL = 'https://api.anthropic.com/v1/messages';
+
+// Get API key from environment variable
+const getApiKeyFromEnv = (): string | null => {
+  return import.meta.env.VITE_CLAUDE_API_KEY || null;
+};
 
 // Available Claude models
 export const CLAUDE_MODELS = {
@@ -21,17 +26,19 @@ export interface OptimizationConfig {
 
 export async function optimizePrompt(
   prompt: string,
-  config: OptimizationConfig
+  config: Partial<OptimizationConfig> = {}
 ): Promise<string> {
   const {
-    apiKey,
     model = 'sonnet',
     maxTokens = 2000,
     temperature = 0.7
   } = config;
 
+  // Get API key from environment
+  const apiKey = config.apiKey || getApiKeyFromEnv();
+
   if (!apiKey) {
-    throw new Error('Claude API key is required for optimization');
+    throw new Error('Claude API key not configured. Please add VITE_CLAUDE_API_KEY to your .env.local file.');
   }
 
   const modelName = CLAUDE_MODELS[model];
@@ -97,45 +104,17 @@ Return ONLY the optimized prompt without any explanations, commentary, or meta-d
   }
 }
 
-// Function to validate API key
-export async function validateApiKey(apiKey: string): Promise<boolean> {
-  try {
-    const response = await fetch(CLAUDE_API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true', // Enable CORS
-      },
-      body: JSON.stringify({
-        model: CLAUDE_MODELS.haiku, // Use cheapest model for validation
-        max_tokens: 10,
-        messages: [
-          {
-            role: 'user',
-            content: 'Hi',
-          },
-        ],
-      }),
-    });
-
-    return response.ok;
-  } catch (error) {
-    console.error('API key validation error:', error);
-    return false;
-  }
+// Check if API key is configured
+export function isApiKeyConfigured(): boolean {
+  return !!getApiKeyFromEnv();
 }
 
-// Store API key in localStorage (encrypted in production)
-export function saveApiKey(apiKey: string): void {
-  localStorage.setItem('claude-api-key', apiKey);
-}
-
+// Get the configured API key
 export function getApiKey(): string | null {
-  return localStorage.getItem('claude-api-key');
+  return getApiKeyFromEnv();
 }
 
-export function removeApiKey(): void {
-  localStorage.removeItem('claude-api-key');
+// Validate that the API key format is correct
+export function validateApiKeyFormat(apiKey: string): boolean {
+  return apiKey.startsWith('sk-ant-api') && apiKey.length > 20;
 }

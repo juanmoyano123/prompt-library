@@ -27,7 +27,7 @@ import { Prompt, PromptVersion } from '@/types';
 import { usePromptStore } from '@/store/promptStore';
 import { v4 as uuidv4 } from 'uuid';
 import { cn } from '@/lib/utils';
-import { getApiKey, optimizePrompt } from '@/utils/claudeAPI';
+import { getApiKey, optimizePrompt, isApiKeyConfigured } from '@/utils/claudeAPI';
 import { ApiSettings } from '@/components/settings/ApiSettings';
 import { toast } from 'sonner';
 
@@ -96,11 +96,10 @@ export function PromptEditor({ prompt, onSave, onCancel }: PromptEditorProps) {
   };
 
   const handleOptimize = async () => {
-    const apiKey = getApiKey();
-
-    if (!apiKey) {
-      toast.error('API Key Required', {
-        description: 'Please configure your Claude API key in settings to use optimization.',
+    if (!isApiKeyConfigured()) {
+      toast.error('API Key Not Configured', {
+        description: 'Please add your Claude API key to .env.local file.',
+        duration: 5000,
       });
       setShowApiSettings(true);
       return;
@@ -121,7 +120,7 @@ export function PromptEditor({ prompt, onSave, onCancel }: PromptEditorProps) {
         description: 'Claude is analyzing and improving your prompt.',
       });
 
-      const optimized = await optimizePrompt(content, { apiKey, model: 'sonnet' });
+      const optimized = await optimizePrompt(content, { model: 'sonnet' });
       setOptimizedContent(optimized);
 
       toast.success('Optimization Complete!', {
@@ -134,6 +133,7 @@ export function PromptEditor({ prompt, onSave, onCancel }: PromptEditorProps) {
 
       toast.error('Optimization Failed', {
         description: errorMessage,
+        duration: 5000,
       });
 
       // Close the optimizer dialog on error
