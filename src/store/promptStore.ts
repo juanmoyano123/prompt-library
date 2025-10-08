@@ -72,6 +72,14 @@ export const usePromptStore = create<PromptStore>()(
           updatedAt: new Date(),
           usageCount: 0,
           versions: [],
+          executionHistory: [],
+          performanceMetrics: {
+            averageTokens: 0,
+            totalExecutions: 0,
+            totalCost: 0,
+            averageResponseTime: 0,
+            successRate: 100,
+          },
         };
         set((state) => ({ prompts: [...state.prompts, newPrompt] }));
       },

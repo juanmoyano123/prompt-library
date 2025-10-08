@@ -67,6 +67,7 @@ export function PromptEditor({ prompt, onSave, onCancel }: PromptEditorProps) {
       tags,
       metadata: {},
       isFavorite: prompt?.isFavorite || false,
+      executionHistory: [],
     };
 
     if (prompt) {

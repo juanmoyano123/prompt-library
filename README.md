@@ -35,42 +35,107 @@ npm run dev
 
 **Nota:** El archivo `.env.local` está ignorado por Git y nunca se subirá al repositorio. Tu API key está segura.
 
-## Características
+## ✨ Características Principales
 
-### Core Features
-- **Gestión de Prompts**: Crea, edita, duplica y elimina prompts
-- **Editor Markdown**: Editor completo con vista previa en tiempo real
-- **Optimización con IA**: Optimiza tus prompts usando la API de Claude
-- **Categorías y Tags**: Organiza tus prompts con categorías coloridas y etiquetas
-- **Búsqueda y Filtros**: Encuentra rápidamente cualquier prompt
-- **Favoritos**: Marca tus prompts más utilizados
-- **Historial de Versiones**: Mantén un registro de las diferentes versiones de tus prompts
-- **Tema Oscuro/Claro**: Interfaz adaptable a tu preferencia
-- **Import/Export**: Guarda y comparte tu biblioteca en formato JSON
-- **LocalStorage**: Persistencia de datos sin necesidad de backend
+### 🗂️ Sistema de Proyectos
+- **Organización Jerárquica**: Agrupa prompts relacionados en proyectos
+- **Dashboard de Proyecto**: Vista completa con métricas y estadísticas
+- **Configuración por Proyecto**: Modelo por defecto, límites de tokens, temperatura
+- **Multi-Proyecto**: Gestiona múltiples proyectos simultáneamente
+- **Navegación Intuitiva**: Sidebar con lista de proyectos y cambio rápido
 
-### Diseño UI/UX
-- Interfaz moderna con gradientes vibrantes
-- Animaciones fluidas con Framer Motion
-- Tarjetas con efectos glassmorphism
-- Grid responsivo estilo masonry
-- Transiciones suaves entre vistas
+### 📊 Consolidación y Exportación
+- **Consolidación Completa**: Agrupa todos los prompts y datos del proyecto
+- **Múltiples Formatos de Exportación**:
+  - **ZIP Completo**: Archivo con todos los prompts, reportes y datos
+  - **JSON Full**: Datos completos del proyecto
+  - **Markdown Report**: Reporte detallado con análisis
+  - **README.md**: Documentación del proyecto lista para compartir
+  - **CSV**: Historial de ejecuciones para análisis en Excel
+  - **Prompts Only**: JSON solo con prompts para importar/compartir
+- **Estadísticas Detalladas**: Análisis completo de uso, costos y rendimiento
+- **Resumen Ejecutivo**: Vista general del proyecto con métricas clave
 
-## Instalación
+### 🤖 Catálogo de Modelos de IA
+- **15+ Modelos Soportados**: Claude, GPT-4, Gemini, Mistral
+- **Comparación de Modelos**: Compara velocidad, calidad y costos
+- **Información Detallada**: Capacidades, contexto, precios por token
+- **Estimador de Costos**: Calcula costos antes de ejecutar
+- **Configuración por Proyecto**: Modelo por defecto personalizable
 
-```bash
-# Clonar el repositorio
-git clone https://github.com/tu-usuario/prompt-library.git
+### 📈 Analytics y Métricas
+- **Tracking de Ejecuciones**: Historial completo de uso
+- **Análisis de Costos**: Costo total, por modelo, por ejecución
+- **Métricas de Rendimiento**: Tokens usados, tiempo de respuesta
+- **Prompts Más Usados**: Identifica tus prompts favoritos
+- **Distribución por Modelo**: Visualiza uso de cada modelo
 
-# Entrar al directorio
-cd prompt-library
+### 💎 Gestión de Prompts
+- **Editor Markdown Avanzado**: Vista previa en tiempo real
+- **Optimización con IA**: Mejora prompts con Claude AI
+- **Sistema de Versiones**: Historial completo de cambios
+- **Categorías y Tags**: Organización flexible
+- **Búsqueda Potente**: Encuentra prompts rápidamente
+- **Favoritos y Duplicación**: Gestión eficiente
+- **Descripción Rica**: Documenta casos de uso
 
-# Instalar dependencias
-npm install
+### 💰 Estimación de Costos
+- **Calculadora en Tiempo Real**: Estima costos antes de ejecutar
+- **Comparación de Modelos**: Encuentra la opción más económica
+- **Tracking de Gastos**: Monitorea costos por proyecto
+- **Optimización de Costos**: Tips para reducir gastos
 
-# Iniciar servidor de desarrollo
-npm run dev
-```
+### 🎨 Interfaz y UX
+- **Tema Oscuro/Claro**: Interfaz adaptable
+- **Diseño Moderno**: Componentes con Shadcn/UI
+- **Animaciones Fluidas**: Transiciones con Framer Motion
+- **Responsive**: Funciona en desktop, tablet y móvil
+- **LocalStorage**: Todo se guarda localmente, sin backend
+
+## 🎯 Casos de Uso
+
+- **Desarrolladores**: Gestiona prompts de código, debugging, documentación
+- **Content Creators**: Organiza prompts de escritura, SEO, marketing
+- **Investigadores**: Almacena prompts de análisis, investigación, síntesis
+- **Equipos**: Comparte proyectos completos con documentación
+- **Freelancers**: Mantén bibliotecas de prompts por cliente/proyecto
+- **Estudiantes**: Organiza prompts de estudio y aprendizaje
+
+## 📖 Guía de Uso
+
+### Crear un Proyecto
+
+1. Click en el botón "+" en el sidebar de proyectos
+2. Ingresa nombre y descripción del proyecto
+3. Configura modelo por defecto y límites (opcional)
+4. ¡Listo! Tu proyecto está creado
+
+### Agregar Prompts al Proyecto
+
+1. Selecciona el proyecto en el sidebar
+2. Click en "New Prompt"
+3. Escribe título, contenido, categoría y tags
+4. Usa el editor markdown para formatear
+5. Click en "Save Prompt"
+
+### Consolidar y Exportar Proyecto
+
+1. Ve al Dashboard del proyecto
+2. Click en "Consolidate Project"
+3. Revisa las estadísticas generadas
+4. Elige el formato de exportación deseado:
+   - **ZIP**: Para backup completo
+   - **Markdown**: Para documentación
+   - **JSON**: Para compartir/importar
+   - **CSV**: Para análisis en Excel
+5. El archivo se descarga automáticamente
+
+### Estimar Costos
+
+1. En el editor de prompt, selecciona un modelo
+2. Usa el estimador de costos
+3. Ajusta tokens de entrada/salida
+4. Ve el costo estimado en tiempo real
 
 ## 🔒 Seguridad de la API Key
 
@@ -130,17 +195,33 @@ cat .gitignore | grep .env
 - **Export**: Click en ⬇️ para descargar tu biblioteca como JSON
 - **Import**: Click en ⬆️ para cargar una biblioteca desde archivo JSON
 
-## Tecnologías Utilizadas
+## 🛠️ Tecnologías Utilizadas
 
-- **React 18** + **Vite** - Framework y bundler
-- **TypeScript** - Type safety
+### Core
+- **React 18** + **Vite** - Framework y bundler ultrarrápido
+- **TypeScript** - Type safety y mejor DX
 - **Tailwind CSS** - Estilos utility-first
-- **shadcn/ui** - Componentes UI modernos
-- **Zustand** - Gestión de estado
-- **Framer Motion** - Animaciones
-- **MDXEditor** - Editor markdown
+- **shadcn/ui** - Componentes UI modernos y accesibles
+
+### Estado y Datos
+- **Zustand** - Gestión de estado con persistencia en LocalStorage
+- **LocalStorage** - Base de datos local, sin backend necesario
+
+### UI/UX
+- **Framer Motion** - Animaciones fluidas y transiciones
+- **@uiw/react-md-editor** - Editor markdown con preview
+- **Radix UI** - Primitivas de UI accesibles
+- **Lucide Icons** - Iconografía moderna
+
+### Análisis y Exportación
+- **Recharts** - Gráficos y visualizaciones (preparado para futuro)
+- **JSZip** - Creación de archivos ZIP
+- **FileSaver** - Descarga de archivos
 - **date-fns** - Manejo de fechas
-- **Lucide Icons** - Iconografía
+
+### Búsqueda y Comparación
+- **Fuse.js** - Búsqueda fuzzy (preparado para futuro)
+- **diff** - Comparación de versiones de prompts
 
 ## Scripts
 
@@ -151,18 +232,60 @@ npm run preview  # Preview del build
 npm run lint     # Linting del código
 ```
 
-## Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```
 src/
 ├── components/
-│   ├── prompts/      # Componentes de prompts
-│   ├── settings/     # Configuración
-│   └── ui/           # Componentes UI base
-├── hooks/            # Custom hooks
-├── store/            # Estado global (Zustand)
-├── types/            # TypeScript types
-└── utils/            # Utilidades
+│   ├── prompts/           # Componentes de gestión de prompts
+│   │   ├── PromptCard.tsx
+│   │   ├── PromptEditor.tsx
+│   │   └── PromptGrid.tsx
+│   ├── settings/          # Configuración y ajustes
+│   │   └── ApiSettings.tsx
+│   └── ui/                # Componentes UI base (shadcn)
+│
+├── features/              # Features modulares (Nuevo!)
+│   ├── projects/
+│   │   ├── components/
+│   │   │   ├── ProjectSidebar.tsx
+│   │   │   └── ProjectDashboard.tsx
+│   │   └── store/
+│   │       └── projectStore.ts
+│   ├── consolidation/
+│   │   ├── components/
+│   │   │   └── ConsolidateButton.tsx
+│   │   └── utils/
+│   │       ├── consolidate.ts
+│   │       └── exporters/
+│   │           ├── jsonExporter.ts
+│   │           ├── markdownExporter.ts
+│   │           └── zipExporter.ts
+│   ├── models/
+│   │   ├── components/
+│   │   │   ├── ModelSelector.tsx
+│   │   │   └── CostEstimator.tsx
+│   │   └── data/
+│   │       └── modelCatalog.ts
+│   └── analytics/         # Preparado para futuras visualizaciones
+│
+├── data/                  # Catálogos y datos estáticos (Nuevo!)
+│   └── modelCatalog.ts    # 15+ modelos con precios y specs
+│
+├── hooks/                 # Custom React hooks
+│   └── useTheme.tsx
+│
+├── store/                 # Estado global (Zustand)
+│   └── promptStore.ts     # Store principal de prompts
+│
+├── types/                 # TypeScript interfaces (Expandido!)
+│   └── index.ts           # Project, ExecutionHistory, Metrics, etc.
+│
+├── utils/                 # Utilidades y helpers
+│   └── claudeAPI.ts       # Integración con Claude API
+│
+├── App.tsx                # Componente principal (Actualizado!)
+└── main.tsx               # Entry point
 ```
 
 ## Contribuir
